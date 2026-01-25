@@ -21,7 +21,7 @@ while(1)
     %if counter == 0
         %break;
     %end
-    X_current = Polyhedron(H_current,h_current);
+    S_current = Polyhedron(H_current,h_current);
     X_next_step = Polyhedron(check_term,h);
     hold on;
     plot(Polyhedron(H_current,h_current),'color','white');
@@ -29,8 +29,8 @@ while(1)
     H_next = [H_current;check_term];
     check_term = check_term * A;
     h_next = [h_current;h];
-
-    if(X_current <= X_next_step)
+    S_next = Polyhedron(H_next,h_next);
+    if(S_next == S_current)
         disp("true!");
         
         p1 = plot(Polyhedron(H_current,h_current),'color','yellow');
