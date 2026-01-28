@@ -13,7 +13,7 @@ function[Zf_Poly_set,A_Zf,b_Zf] = search_invariant_set(Ak,A_z,b_z)
     n_search_end = length(b_z(:,1));
     
     %max_value in the constranit area
-    f_max_value = -inf;
+   % f_max_value = -inf;
 
     %setting storage for constraint
     A_current = A_z;
@@ -24,7 +24,7 @@ function[Zf_Poly_set,A_Zf,b_Zf] = search_invariant_set(Ak,A_z,b_z)
     A_extend_tmp = A_z;
 
     while(1)
-
+        f_max_value = -inf;
         %find the max_value from every possible linear combination
         
         for i = 1:n_search_end
@@ -40,7 +40,7 @@ function[Zf_Poly_set,A_Zf,b_Zf] = search_invariant_set(Ak,A_z,b_z)
         if f_max_value<=0
             break;
         else
-            f_max_value = -inf;
+            
             A_extend_tmp = A_extend_tmp*Ak;
             A_extend_next = [A_current;A_extend_tmp];
             b_extend_next = [b_current;b_z];
